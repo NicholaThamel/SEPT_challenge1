@@ -23,4 +23,28 @@ public class ItemController {
         this.itemsDao = itemsDao;
     }
 
+    @PostMapping("/item")
+    public void createItem(@RequestBody Item item) {
+        itemsDao.createItem(item);
+    }
 
+    @GetMapping("/item/{id}")
+    public Item getItem(@PathVariable int id) {
+        return itemsDao.getItem(id);
+    }
+
+    @GetMapping("/item/item")
+    public List<Item> getAll(){
+        return itemsDao.getAllItems();
+    }
+
+    @PutMapping("/item/{name}")
+    public void updateItem(@PathVariable String name, @RequestBody Item item) {
+        itemsDao.updateItem(item);
+    }
+
+    @DeleteMapping("/item/{name}")
+    public void DeleteItem(@PathVariable String  name) {
+        itemsDao.deleteItem(name);
+    }
+}
